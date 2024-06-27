@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+    return ["es", "en"].map((lang) => {
+        return { params: { lang } };
+    });
+}
+---
+
+<Layout title={t("site.title")} description={t("site.title")} lang={lang} />

@@ -1,3 +1,16 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+    return ["en", "fr", "es"].map((lang) => {
+        return { params: { lang } };
+    });
+}
+---
+
 <section
     class="bg-center bg-no-repeat bg-[url('https://www.masmujeronline.com/wp-content/uploads/2022/11/best-pilates-reformer-amazon-scaled-1.jpeg')] bg-gray-700 bg-blend-multiply"
 >
@@ -5,12 +18,11 @@
         <h1
             class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl"
         >
-            Centro de Vida y Bienestar
+            {t("sub-header")}
         </h1>
         <p
             class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48"
         >
-        
         </p>
     </div>
 </section>
