@@ -2,8 +2,13 @@
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
 import SubHeader from "../components/sub-header.astro";
+import type { CollectionEntry } from "astro:content";
+
 
 import { useTranslations, type UiType } from "../i18n/utils";
+
+type Props = CollectionEntry<"blog">["data"];
+
 
 const { title, description, lang } = Astro.props;
 
