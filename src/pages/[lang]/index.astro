@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import localbird  from "../../assets/libella-pilates-(1).webp";
 
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
@@ -21,7 +23,7 @@ export async function getStaticPaths() {
             >
                 <div class="md:5/12 lg:w-5/12 rounded-lg overflow-hidden">
                     <img
-                        src="/src/assets/libella-pilates-(1).webp"
+                        src={localbird.src}
                         alt="image"
                         loading="lazy"
                         width=""
