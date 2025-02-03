@@ -1,0 +1,145 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Accordion from "../../components/Accordion.astro";
+
+const faqItems = [
+  {
+    question: "Lorem ipsum dolor sit amet?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat velit vel felis bibendum, ut vestibulum mauris vestibulum. Nullam fermentum tellus a nulla cursus, et malesuada elit congue.`,
+  },
+  {
+    question: "Sed do eiusmod tempor incididunt ut labore?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+  },
+  {
+    question: "Duis aute irure dolor in reprehenderit?",
+    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+  },
+];
+
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import Form from "../../components/Form.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+    return ["es", "en"].map((lang) => {
+        return { params: { lang } };
+    });
+}
+---
+
+<Layout title={t("site.title")} description={t("site.title")} lang={lang}>
+    <div class="w-full draggable">
+        <div class="container flex flex-col items-center gap-16 mx-auto my-32">
+            <div
+                class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+            >
+                <div
+                    class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main"
+                >
+                    <span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-mail"
+                            width="44"
+                            height="44"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="#2c3e50"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"
+                            ></path>
+                            <path
+                                d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+                            ></path>
+                            <path d="M3 7l9 6l9 -6"></path>
+                        </svg>
+                    </span>
+                    <p class="text-2xl font-extrabold text-dark-grey-900">
+                        Email
+                    </p>
+                    <a
+                        class="text-lg font-bold text-purple-blue-500"
+                        href="mailto: hello@loopple.com">hello@loopple.com</a
+                    >
+                </div>
+                <div
+                    class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main"
+                >
+                    <span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-phone-call"
+                            width="44"
+                            height="44"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="#2c3e50"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"
+                            ></path>
+                            <path
+                                d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
+                            ></path>
+                            <path d="M15 7a2 2 0 0 1 2 2"></path>
+                            <path d="M15 3a6 6 0 0 1 6 6"></path>
+                        </svg>
+                    </span>
+                    <p class="text-2xl font-extrabold text-dark-grey-900">
+                        Phone
+                    </p>
+                    <a
+                        class="text-lg font-bold text-purple-blue-500"
+                        href="tel:+516-486-5135">+516-486-5135</a
+                    >
+                </div>
+                <div
+                    class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main"
+                >
+                    <span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-map-pin"
+                            width="44"
+                            height="44"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="#2c3e50"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"
+                            ></path>
+                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                            <path
+                                d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"
+                            ></path>
+                        </svg>
+                    </span>
+                    <p class="text-2xl font-extrabold text-dark-grey-900">
+                        Location
+                    </p>
+                    <a
+                        class="text-lg font-bold text-purple-blue-500"
+                        target="_blank"
+                        href="https://goo.gl/maps/QcWzYETAh4FS3KTD7"
+                        >10924 Urna Convallis</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <Form />
+
+    <Accordion items={faqItems} />
+</Layout>
